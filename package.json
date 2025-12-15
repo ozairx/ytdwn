@@ -1,0 +1,30 @@
+{
+  "name": "ytdwn",
+  "version": "1.0.0",
+  "description": "A command-line tool to download YouTube playlists and convert them to MP3.",
+  "main": "src/index.js",
+  "bin": {
+    "ytdwn": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "youtube",
+    "downloader",
+    "mp3",
+    "cli"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "debug": "^4.4.3",
+    "ora": "^5.4.1",
+    "yargs": "^17.7.2",
+    "youtube-dl-exec": "^3.0.27"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
