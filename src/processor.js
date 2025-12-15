@@ -7,14 +7,20 @@ const path = require('path');
  * @param {string} outputDir The directory to save the MP3 file.
  * @returns {Promise<void>} A promise that resolves when the processing is complete.
  */
-async function processVideoWithYtDlp(video, outputDir) {
+async function processVideoWithYtDlp(video, outputDir, { cookies }) {
   const outputTemplate = path.join(outputDir, '%(title)s.%(ext)s');
 
-  await youtubedl(video.url, {
+  const options = {
     extractAudio: true,
     audioFormat: 'mp3',
     output: outputTemplate,
-  });
+  };
+
+  if (cookies) {
+    options.cookies = cookies;
+  }
+
+  await youtubedl(video.url, options);
 }
 
 module.exports = { processVideoWithYtDlp };

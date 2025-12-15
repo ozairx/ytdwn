@@ -5,7 +5,7 @@ const { processVideoWithYtDlp } = require('./processor');
 const logger = require('./logger');
 
 async function main(options) {
-  const { playlist_url, output, parallel, skipExisting, dryRun, limit } = options;
+  const { playlist_url, output, parallel, skipExisting, dryRun, limit, cookies } = options;
 
   if (dryRun) {
     logger.warn('Dry run enabled. No files will be downloaded or converted.');
@@ -59,7 +59,7 @@ async function main(options) {
 
     const spinner = logger.spinner(`[${completedVideos + 1}/${totalVideos}] Processing "${video.title}"...`);
     try {
-      await processVideoWithYtDlp(video, finalOutputDir);
+      await processVideoWithYtDlp(video, finalOutputDir, { cookies });
       spinner.succeed(`[${completedVideos + 1}/${totalVideos}] Processed "${video.title}".`);
       completedVideos++;
     } catch (error) {

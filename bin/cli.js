@@ -41,6 +41,11 @@ const argv = yargs(hideBin(process.argv))
     describe: 'Stop after converting a specific number of videos',
     type: 'number',
   })
+  .option('cookies', {
+    alias: 'c',
+    describe: 'Path to a cookies file to authenticate with YouTube',
+    type: 'string',
+  })
   .alias('h', 'help')
   .alias('v', 'version')
   .demandCommand(1, 'You must provide a playlist URL.')
